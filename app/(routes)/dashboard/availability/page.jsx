@@ -87,7 +87,7 @@ function Availability() {
                     <h2 className='font-bold'>Availability Days</h2>
                     <div className='flex flex-col gap-4'>
                         {DaysList && DaysList.map((item, index) => (
-                            <div key={index} className='p-5 shadow'>
+                            <div key={index} className='p-5 shadow hover:bg-blue-200'>
                                 <h2 className='text-[16px] font-bold '><Checkbox className="mr-2"
                                     checked={daysAvailable && daysAvailable[item?.day] ? daysAvailable[item?.day] : false}
                                     onCheckedChange={(e) => onHandleChange(item.day, e)}

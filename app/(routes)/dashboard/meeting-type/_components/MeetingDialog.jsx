@@ -22,18 +22,13 @@ const MeetingDialog = () => {
     return (
         <Dialog >
             <DialogTrigger>
-                <Button className="flex bg-primary hover:bg-blue-200 gap-2 w-full mt-7 rounded-lg text-white"> <Plus className='text-white' /> Create Meeting</Button>
-
+                <div
+                    className="flex bg-primary hover:bg-blue-200 gap-2 px-5 py-3 mt-7 rounded-lg text-white">
+                    <Plus className='text-white' />
+                    Create Meeting
+                </div>
             </DialogTrigger>
             <DialogContent className="min-w-[80%] min-h-[80%] bg-white">
-                {/* <DialogHeader>
-                    <DialogTitle>Are you absolutely sure?</DialogTitle>
-                    <DialogDescription>
-                        This action cannot be undone. This will permanently delete your account
-                        and remove your data from our servers.
-                    </DialogDescription>
-                </DialogHeader> */}
-
                 <div className='grid grid-cols-1 md:grid-cols-3'>
                     {/* Meeting Form  */}
                     <div className='shadow-md border'>

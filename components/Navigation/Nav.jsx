@@ -18,7 +18,7 @@ const Navigation = () => {
                     height={80}
                     className='h-fit'
                 />
-                <div className='flex gap-12'>
+                {/* <div className='flex gap-12'>
                     {menulinks.map((link, index) => (
                         <Link
                             href={link.href}
@@ -26,7 +26,7 @@ const Navigation = () => {
                             className='text-lg font-semibold capitalize'
                         >{link.name}</Link>
                     ))}
-                </div>
+                </div> */}
                 <div className='flex gap-3'>
                     <LoginLink><Button variant="outline" className="bg-white">Login</Button></LoginLink>
                     <RegisterLink><Button className="bg-primary text-white">Sign Up</Button></RegisterLink>

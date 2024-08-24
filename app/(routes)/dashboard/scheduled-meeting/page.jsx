@@ -50,21 +50,25 @@ function ScheduledMeeting() {
         <div className='p-10'>
             <h2 className='font-bold text-2xl'>Scheduled Meetings</h2>
             <hr className='my-5'></hr>
-            <Tabs defaultValue="upcoming" className="w-[400px]">
+            <div className='grid grid-cols-2 gap-4'>
+            <ScheduledMeetingList
+                meetingList={filterMeetingList('upcoming')}
+            /> 
+            </div>
+            {/* <Tabs defaultValue="upcoming" className="w-[400px]">
                 <TabsList>
                     <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
                     <TabsTrigger value="expired">Expired</TabsTrigger>
                 </TabsList>
                 <TabsContent value="upcoming">
-                    <ScheduledMeetingList
-                        meetingList={filterMeetingList('upcoming')}
-                    /> </TabsContent>
+                    
+                    </TabsContent>
                 <TabsContent value="expired">
                     <ScheduledMeetingList
                         meetingList={filterMeetingList('expired')}
                     />
                 </TabsContent>
-            </Tabs>
+            </Tabs> */}
 
         </div>
     )

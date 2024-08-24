@@ -1,11 +1,14 @@
+'use client'
+
 import React from 'react'
 import { Button } from './ui/button'
 import Image from 'next/image'
+import { RegisterLink } from '@kinde-oss/kinde-auth-nextjs'
 
 const HomeBanner = () => {
     return (
-        <div className='gap-6 max-h-screen'>
-            <div className='flex flex-col pt-[130px] justify-center items-center'>
+        <div className='gap-6 max-h-screen grid grid-cols-1 md:grid-cols-2'>
+            <div className='flex flex-col  justify-center items-center'>
                 <h1 className='text-[60px] font-semibold text-center'>
                     Run <span className='text-primary'>Standup Meetings</span> <br /> Setup in Seconds
                 </h1>
@@ -13,7 +16,7 @@ const HomeBanner = () => {
                     Join thousands of teams that use <span className='text-primary font-bold'>Firmscheduler</span> to automate daily standups meetings.
                 </p>
                 <div className='flex'>
-                    <Button className="py-6 text-white w-[200px] text-[20px]">Get Started</Button>
+                    <RegisterLink><Button className="py-6 text-white w-[200px] text-[20px]">Get Started</Button></RegisterLink>
                     {/* <Image
                         src="/down-arrow-img.png"
                         alt="image"
@@ -22,6 +25,15 @@ const HomeBanner = () => {
                         className='h-fit'
                     /> */}
                 </div>
+            </div>
+            <div>
+                <Image
+                    src="/social-media.png"
+                    alt="image"
+                    width={1000}
+                    height={1000}
+                    className='h-fit'
+                />
             </div>
         </div>
     )

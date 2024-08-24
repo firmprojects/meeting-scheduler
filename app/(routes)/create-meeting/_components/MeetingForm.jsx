@@ -58,7 +58,7 @@ function MeetingForm({ setFormValue }) {
             createdBy: user?.email,
         });
         toast('New Meeting Event Created!');
-        router.replace('/dashboard/meeting-type');
+        router.push('/dashboard/meeting-type');
     };
 
     return (
@@ -102,7 +102,7 @@ function MeetingForm({ setFormValue }) {
                 {errors.duration && <p className="text-red-500">{errors.duration.message}</p>}
 
                 <h2 className='font-bold'>Platform
-                     *</h2>
+                    *</h2>
                 <div className='grid grid-cols-4 gap-3'>
                     {LocationOption.map((option, index) => (
                         <div
@@ -132,7 +132,7 @@ function MeetingForm({ setFormValue }) {
                 )}
 
                 <h2 className='font-bold'>Select Theme Color</h2>
-                <div className='flex justify-evenly'>
+                <div className='flex justify-between'>
                     {ThemeOptions.map((color, index) => (
                         <div
                             key={index}
@@ -146,7 +146,7 @@ function MeetingForm({ setFormValue }) {
 
                 <Button
                     type="submit"
-                    className="w-full mt-4"
+                    className="w-full mt-4 text-white"
                     disabled={(!watch("eventName") || !watch("duration") || !watch("locationType") || !watch("locationUrl"))}
                 >
                     Create
