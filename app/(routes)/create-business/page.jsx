@@ -33,7 +33,7 @@ function CreateBusiness() {
     }
     return (
         <div className='p-14 items-center flex flex-col gap-20 my-10'>
-            <Image src='/logo.svg' width={200} height={200} />
+            <Image src='/logo-2.png' width={200} height={200} />
             <div className='flex flex-col items-center gap-4 max-w-3xl'>
                 <h2 className='text-4xl font-bold'>What is the name of your business?</h2>
                 <p className='text-slate-500'>You can always change this later from settings</p>
