@@ -8,11 +8,11 @@ function CreateMeeting() {
   return (
     <div className='grid grid-cols-1 md:grid-cols-3'>
         {/* Meeting Form  */}
-        <div className='shadow-md border h-screen'>
+        <div className='shadow-md border max-w-[400px]'>
             <MeetingForm setFormValue={(v)=>setFormValue(v)} />
         </div>
         {/* Preview  */}
-        <div className='md:col-span-2'>
+        <div className='md:col-span-2 ml-[350px] w-full'>
               <PreviewMeeting formValue={formValue}/>  
         </div>
     </div>

@@ -9,108 +9,116 @@ import { app } from '@/config/FirebaseConfig'
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
 import { toast } from 'sonner'
 
+
 function Availability() {
 
-    const [daysAvailable,setDaysAvailable]=useState(
+
+    const [daysAvailable, setDaysAvailable] = useState(
         {
-        Sunday:false,
+            Sunday: false,
         },
         {
-            Monday:false
+            Monday: false
         },
         {
-            Tuesday:false
+            Tuesday: false
         },
         {
-            Wendsday:false
+            Wendsday: false
         },
         {
-            Thursday:false
+            Thursday: false
         },
         {
-            Friday:false
+            Friday: false
         },
         {
-            Saturday:false
+            Saturday: false
         }
     );
-    const [startTime,setStartTime]=useState();
-    const [endTime,setEndTime]=useState();
-    const db=getFirestore(app);
-    const {user}=useKindeBrowserClient();
+    const [startTime, setStartTime] = useState();
+    const [endTime, setEndTime] = useState();
+    const db = getFirestore(app);
+    const { user } = useKindeBrowserClient();
 
-    useEffect(()=>{
-        user&&getBusinessInfo();
-    },[user])
-    const getBusinessInfo=async()=>{
-        const docRef=doc(db,'Business',user.email);
-        const docSnap=await getDoc(docRef);
-        const result=docSnap.data();
+    useEffect(() => {
+        user && getBusinessInfo();
+    }, [user])
+    const getBusinessInfo = async () => {
+        const docRef = doc(db, 'Business', user.email);
+        const docSnap = await getDoc(docRef);
+        const result = docSnap.data();
         setDaysAvailable(result.daysAvailable);
         setStartTime(result.startTime);
         setEndTime(result.endTime)
     }
 
-    const onHandleChange=(day,value)=>{
+    const onHandleChange = (day, value) => {
         setDaysAvailable({
             ...daysAvailable,
-            [day]:value
+            [day]: value
         })
 
         console.log(daysAvailable)
     }
 
-    const handleSave=async()=>{
-        console.log(daysAvailable,startTime,endTime);
-        const docRef=doc(db,'Business',user?.email);
-        await updateDoc(docRef,{
-            daysAvailable:daysAvailable,
-            startTime:startTime,
-            endTime:endTime
-        }).then(resp=>{
+    const handleSave = async () => {
+        console.log(daysAvailable, startTime, endTime);
+        const docRef = doc(db, 'Business', user?.email);
+        await updateDoc(docRef, {
+            daysAvailable: daysAvailable,
+            startTime: startTime,
+            endTime: endTime
+        }).then(resp => {
             toast('Change Updated !')
         })
     }
 
-  return (
-    <div className='p-10'>
-        <h2 className='font-bold text-2xl'>Availability</h2>
-        <hr className='my-7'></hr>
-        <div>
-            <h2 className='font-bold'>Availability Days</h2>
-            <div className='grid grid-cols-2 md:grid-cols-4 gap-5 my-3'>
-                {DaysList&&DaysList.map((item,index)=>(
-                    <div key={index}>
-                        <h2><Checkbox
-                        checked={daysAvailable&&daysAvailable[item?.day]?daysAvailable[item?.day]:false}
-                        onCheckedChange={(e)=>onHandleChange(item.day,e)}
-                        /> {item.day}</h2>
+    return (
+        <div className='px-10 py-5'>
+            <h2 className='font-bold text-2xl'>Availability</h2>
+            <hr className='my-3'></hr>
+
+
+
+
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-12'>
+                <div className='col-span-1'>
+                    <h2 className='font-bold'>Availability Days</h2>
+                    <div className='flex flex-col gap-4'>
+                        {DaysList && DaysList.map((item, index) => (
+                            <div key={index} className='p-5 shadow'>
+                                <h2 className='text-[16px] font-bold '><Checkbox className="mr-2"
+                                    checked={daysAvailable && daysAvailable[item?.day] ? daysAvailable[item?.day] : false}
+                                    onCheckedChange={(e) => onHandleChange(item.day, e)}
+                                /> {item.day}</h2>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
+                <div className='col-span-2'>
+                    <h2 className='font-bold'>Availability Time</h2>
+                    <div className='flex gap-10'>
+                        <div className='mt-3'>
+                            <h2>Start Time</h2>
+                            <Input type="time"
+                                defaultValue={startTime}
+                                onChange={(e) => setStartTime(e.target.value)} />
+                        </div>
+                        <div className='mt-3'>
+                            <h2>End Time</h2>
+                            <Input type="time"
+                                defaultValue={endTime}
+                                onChange={(e) => setEndTime(e.target.value)} />
+                        </div>
+                    </div>
+                </div>
             </div>
+            <Button className="mt-5 text-white"
+                onClick={handleSave}
+            >Save</Button>
         </div>
-        <div>
-        <h2 className='font-bold mt-10'>Availability Time</h2>
-        <div className='flex gap-10'>
-            <div className='mt-3'>
-                <h2>Start Time</h2>
-                <Input type="time" 
-                defaultValue={startTime}
-                onChange={(e)=>setStartTime(e.target.value)} />
-            </div>
-            <div className='mt-3'>
-                <h2>End Time</h2>
-                <Input type="time" 
-                defaultValue={endTime}
-                onChange={(e)=>setEndTime(e.target.value)} />
-            </div>
-        </div>
-        </div>
-        <Button className="mt-10" 
-        onClick={handleSave}
-        >Save</Button>
-    </div>
-  )
+    )
 }
 
 export default Availability

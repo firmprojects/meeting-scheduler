@@ -1,18 +1,18 @@
-export default[
+export default [
     {
-        name:'Zoom',
-        icon:'/zoom.png'
+        name: 'Zoom',
+        icon: '/zoom.png'
     },
     {
-        name:'Meet',
-        icon:'/meet.png'
+        name: 'Meet',
+        icon: '/meet.png'
     },
     {
-        name:'Phone',
-        icon:'/phone.png'
+        name: 'Teams',
+        icon: '/teams.png'
     },
     {
-        name:'Other',
-        icon:'/other.png'
+        name: 'Phone',
+        icon: '/phone.png'
     }
 ]

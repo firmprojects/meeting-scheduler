@@ -21,15 +21,15 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "#F9FCFF",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0069ff",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#0E82FD",
+          // foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#374151",
+          // foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

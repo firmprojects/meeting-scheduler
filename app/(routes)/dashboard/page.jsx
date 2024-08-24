@@ -5,16 +5,18 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { app } from '@/config/FirebaseConfig';
 import { useRouter } from 'next/navigation';
 import MeetingType from './meeting-type/page';
+
+
+
 function Dashboard() {
-
   const db = getFirestore(app);
-  const {user}=useKindeBrowserClient();
-  const [loading,setLoading]=useState(true);
-  const router=useRouter();
+  const { user } = useKindeBrowserClient();
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
-  useEffect(()=>{
-    user&&isBusinessRegistered();
-  },[user])
+  useEffect(() => {
+    user && isBusinessRegistered();
+  }, [user])
 
 
   const isBusinessRegistered = async () => {
@@ -32,14 +34,13 @@ function Dashboard() {
     }
   }
 
-  if(loading)
-  {
+  if (loading) {
     return <h2>Loading...</h2>
   }
 
   return (
     <div>
-      <MeetingType/>
+      <MeetingType />
     </div>
   )
 }
